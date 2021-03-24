@@ -65,52 +65,6 @@ let photo_click = () => {
 }
 
 
-let page = () => {
-
-	let photo_id = document.querySelectorAll('#photos');
-
-	let images_path = ["images/header-background.jpg", "images/header-background.jpg", "images/header-background2.jpg","images/header-background2.jpg","images/header-background3.jpg"];
-	
-	const page_inf = {
-		page_number: 5,
-		items: images_path
-	};
-
-
-
-
-	// Fotoğraflar İçin
-	
-	for(let i = 0 ; i < images_path.length; i++){
-			
-			let createImg = document.createElement("img");
-				
-			createImg.src = images_path[i];
-
-			document.getElementById("photos").appendChild(createImg);
-
-			
-
-		}
-	
-	// Sayfa Numarası Butonları İçin
-
-
-	for(let j = 1; j <= page_inf.page_number;j++){
-
-		let createButon = document.createElement("button");
-
-
-		createButon.innerText = j;
-
-		console.log(createButon);
-
-		document.getElementById("page-numbers").appendChild(createButon);
-	}
-
-}
-
-
 
 let arama_kutusu = () => {
 
@@ -203,12 +157,83 @@ let arama_kutusu = () => {
 
 
 }
+
+
+
+let pagenigition = () => {
+
+	let page_numbers = document.querySelectorAll("#page-numbers button");
+
+	let photos = document.querySelectorAll("#photos img");
+
+	for(let i = 0; i < photos.length; i++){
+
+		if(i > 2){
+			photos[i].style.display = 'none';
+		}
+	}
+
+	let loop = 0;
+
+	for(let i = 0; i < page_numbers.length; i++){
+
+		page_numbers[i].addEventListener("click", () => {
+			
+			let number = page_numbers[i].innerText;
+
+			if(number == 1){
+				loop = 0;
+				while (loop <= 2) {
+					photos[loop].style.display = 'block';
+					loop++;
+				}
+				
+				while(loop >= 3){
+					photos[loop].style.display = 'none';
+					loop++;
+				}
+				loop = 0;
+			}
+		
+			if(number == 2){
+
+				loop = 3;
+				while(loop <= 5){
+					photos[loop].style.display = 'block';
+					loop++;
+				}
+				loop = 2;
+				while(loop >= 0){
+					photos[loop].style.display = 'none';
+					loop--;
+				}
+			}
+
+			if(number == 3){
+
+				loop = 5;
+				while(loop <= 7){
+					photos[loop].style.display = 'block';
+					loop++;
+				}
+				loop = 5;
+				while(loop >= 0){
+					photos[loop].style.display = 'none';
+					loop--;
+
+				}
+			}
+
+		})
+	}
+
+}
+
 window.onload = () => {
 	Header();
 	Slider();
-	page();
 	arama_kutusu();
-
+	pagenigition();
 	$(document).ready(function(){
 		photo_click();
 	
