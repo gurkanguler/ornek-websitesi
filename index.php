@@ -13,6 +13,10 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+	<?php 
+		include 'upload/db.php';
+	?>
 	
 	<!-- header -->
 		<div id="header">
@@ -116,6 +120,10 @@
 							<img src="images/header-background2.jpg" alt="" id="galeri" class="galeri">
 							<img src="images/header-background.jpg" alt="" id="galeri" class="galeri">
 							<img src="images/header-background.jpg" alt="" id="galeri" class="galeri">
+
+
+							
+
 						</div>
 						
 					<!-- photos -->
@@ -129,6 +137,40 @@
 							<button>5</button>
 						</div>
 					<!-- page-numbers -->
+
+
+					<a href="#fotograf-ekle" title="Fotoğraf Yükle">
+						<button id="fotograf-btn">Fotoğraf Yükle&nbsp;<i class="fas fa-upload"></i></button>
+					</a>
+
+					<div id="fotograf-ekle">
+						
+						<header>Fotoğraf Ekleyebilirsiniz <div id="close-window"><button id="close-my-window"><i class="fas fa-window-close"></i></button></div></header>
+						
+						<div id="foto-form">
+
+							<form action="upload/photo_upload.php" enctype="multipart/form-data" method="post">
+
+								<input type="file" name="photo" id="fotograf-txt" required>
+
+								<fieldset>
+									<legend>Kategori</legend>
+
+									<select name="kategori" id="kategori">
+										<option value="Doga">Doga</option>
+										<option value="Sanat">Sanat</option>
+										<option value="Bilim">Bilim</option>
+									</select>
+								</fieldset>
+								
+
+								<button type="submit" name="add-btn" id="upload-btn">Yükle&nbsp;<i class="fas fa-check"></i></button>
+
+							</form>
+
+						</div>
+
+					</div>
 
 				</div>
 			<!-- gallery-content -->

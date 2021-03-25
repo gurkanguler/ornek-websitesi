@@ -234,6 +234,13 @@ window.onload = () => {
 	Slider();
 	arama_kutusu();
 	pagenigition();
+
+	document.getElementById("fotograf-btn").addEventListener("click", () => {
+		document.getElementById("fotograf-ekle").style.display = 'block';
+	});
+
+	document.getElementById("close-my-window").addEventListener("click", () => {document.getElementById("fotograf-ekle").style.display = 'none';})
+
 	$(document).ready(function(){
 		photo_click();
 	
